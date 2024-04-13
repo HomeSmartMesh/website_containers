@@ -1,15 +1,16 @@
-# Use the official Node.js 20 image as a base
 FROM node:20
-
-# Setup work directory for all operations
 WORKDIR /workspace
 
-# Copy scripts into the container
-COPY install.sh install.sh
-COPY build.sh build.sh
+RUN npm install -g pnpm
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/MicroWebStacks/astro-big-doc.git /astro-big-doc
+WORKDIR /astro-big-doc
 
-# Run install script
-RUN ./install.sh
+# Install
+RUN pnpm install
+
+# Copy scripts into the container
+COPY build.sh build.sh
 
 # Set build.sh as the entrypoint
 ENTRYPOINT ["./build.sh"]

@@ -4,8 +4,8 @@ services:
   astro-doc-builder:
     build: ./builder
     volumes:
-      - ./content:/user_repo/content
-      - ./public:/user_repo/public
-      - ./menu.yaml:/user_repo/menu.yaml
+      - ./content:/astro-big-doc/content
+      - ./public:/astro-big-doc/public
+      - ./menu.yaml:/astro-big-doc/menu.yaml
       - ./dist:/astro-big-doc/dist
     container_name: astro-doc-builder

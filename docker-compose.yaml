@@ -1,11 +1,11 @@
-version: "2.4"
+version: "3.8"
 
 services:
   astro-doc-builder:
     build: ./builder
     volumes:
-      - ./:/user_repo
+      - ./content:/user_repo/content
+      - ./public:/user_repo/public
+      - ./menu.yaml:/user_repo/menu.yaml
       - ./dist:/astro-big-doc/dist
     container_name: astro-doc-builder
-    cpu_count: 4     # Limit to specific number of CPUs
-    mem_limit: 2048m  # Memory limit

@@ -1,4 +1,4 @@
-version: "3.8"
+version: "2.4"
 
 services:
   astro-doc-builder:
@@ -7,11 +7,5 @@ services:
       - ./:/user_repo
       - ./dist:/astro-big-doc/dist
     container_name: astro-doc-builder
-    deploy:
-      resources:
-        limits:
-          cpus: '4.0'  # Allocating 4 CPU cores
-          memory: 2048M
-        reservations:
-          cpus: '2.0'  # Reserve 2 CPU cores
-          memory: 1024M
+    cpu_count: 4     # Limit to specific number of CPUs
+    mem_limit: 2048m  # Memory limit

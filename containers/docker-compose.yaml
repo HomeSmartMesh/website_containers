@@ -17,5 +17,17 @@ services:
       - ../menu.yaml:/astro-big-doc/menu.yaml
       - ../dist:/astro-big-doc/dist
     ports:
-      - "3001:3001"
-      - "4321:4321"
+      - 3001:3001
+      - 4321:4321
+  apache:
+    image: httpd:latest
+    volumes:
+      - ../dist:/usr/local/apache2/htdocs/
+    ports:
+      - 8080:80
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ../dist:/usr/share/nginx/html
+    ports:
+      - 80:80

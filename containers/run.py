@@ -19,3 +19,7 @@ if(command == "build"):
     subprocess.run(["docker-compose", "run", "--rm", "astro-big-doc", "build"])
 elif(command == "init"):
     subprocess.run(["docker-compose", "run", "--rm", "seeds"])
+elif(command == "apache"):
+    subprocess.run("docker-compose up apache", shell=True, check=True)
+elif(command == "server"):
+    subprocess.run("docker-compose up nginx", shell=True, check=True)

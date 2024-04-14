@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  #fetches dockerfiles e.g. ./seeds.yaml => ./dockerfiles/astro-big-doc.Dockerfile,...
+  seeds:
+    build:
+      context: ./seeds
+    volumes:
+      - ./dockerfiles:/dockerfiles
+  astro-big-doc:
+    build:
+      context: ./dockerfiles
+      dockerfile: astro-big-doc.Dockerfile
+    volumes:
+      - ../content:/astro-big-doc/content
+      - ../public:/astro-big-doc/public
+      - ../menu.yaml:/astro-big-doc/menu.yaml
+      - ../dist:/astro-big-doc/dist
+    ports:
+      - "3001:3001"
+      - "4321:4321"

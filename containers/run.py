@@ -15,11 +15,11 @@ if len(sys.argv) > 1:
 # Change the working directory
 os.chdir(docker_compose_dir)
 
-if(command == "build"):
-    subprocess.run(["docker-compose", "run", "--rm", "astro-big-doc", "build"])
-elif(command == "init"):
+if(command == "init"):
     subprocess.run(["docker-compose", "run", "--rm", "seeds"])
+elif(command == "build"):
+    subprocess.run(["docker-compose", "run", "--rm", "astro-big-doc", "build"])
 elif(command == "apache"):
     subprocess.run("docker-compose up apache", shell=True, check=True)
-elif(command == "server"):
+elif(command in ["server","nginx"]):
     subprocess.run("docker-compose up nginx", shell=True, check=True)

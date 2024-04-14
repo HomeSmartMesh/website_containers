@@ -1,0 +1,20 @@
+#This file is experimental as alternative to seeds/seeds.yaml
+#and also to generate the docker-compose.yaml with given arguments
+build:
+  uses: MicroWebStacks/astro-big-doc@main
+  with:
+    content: ../content
+    public: ../public
+    menu: ../menu.yaml
+    dist: ../dist
+apache:
+  uses: httpd:latest
+  with:
+    dist: ../dist
+    port: 8080
+nginx:
+  alias: server
+  uses: nginx:latest
+  with:
+    dist: ../dist
+    port: 80
